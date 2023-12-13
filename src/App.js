@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Conpo from './conpo'; // Asegúrate de la ruta correcta
 
-function App() {
+const App = () => {
+  const [token, setToken] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/otro" element={<Conpo token={token} />} />
+        {/* Otras rutas de tu aplicación */}
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
